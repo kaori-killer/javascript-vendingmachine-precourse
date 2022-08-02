@@ -34,7 +34,7 @@ function paintProduct(newProduct){
     productStatusList.appendChild(tr);
 }
 
-function IsValidProductPrice(prcie){
+function isValidProductPrice(prcie){
     if (prcie >= 100 && prcie % 10 == 0) {
         return true;
     }
@@ -52,7 +52,7 @@ function handleToDoSubmit(event){
     productPriceInput.value = "";
     productQuantityInput.value = "";
 
-    if (!IsValidProductPrice(parseInt(newProductPrice))) return;
+    if (!isValidProductPrice(parseInt(newProductPrice))) return;
 
     const newProductObj = {
         id: Date.now(),
