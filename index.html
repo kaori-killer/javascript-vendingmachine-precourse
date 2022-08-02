@@ -7,17 +7,23 @@
   </head>
   <body>
     <div id="app">
-      <div id="product-manage">
-        <div id="product-add">
-          <p>상품 추가하기</p>
-          <form action="product-add-form">
-            <input id="product-name-input" type="text">
-            <input id="product-price-input" type="number">
-            <input id="product-count-input" type="number">
-            <button id="product-add-submit">추가하기</button>
+      <!-- 상품 관리 -->
+      <div>
+        <!--상품 추가하기 -->
+        <div>
+          <form id="product-add-form">
+            <input type="text" id="product-name-input" placeholder="상품명">
+            <input type="number" id="product-price-input" placeholder="가격">
+            <input type="number" id="product-quantity-input" placeholder="수량">
+            <button id="product-add-button">추가하기</button>
           </form>
-        </div>      
-      </div>
+        </div>
+        <!-- 상품 현황 -->
+        <div>
+          <ul></ul>
+        </div>
+      </div> 
     </div>
+    <script src="src/productManage.js"></script>  
   </body>
 </html>
