@@ -5,6 +5,11 @@ const productQuantityInput = productAddForm.querySelector("#product-quantity-inp
 const productStatusList = document.getElementById("product-status-list");
 
 let products = [];
+PRODUCTS_KEY = "products";
+
+function saveProduct(){
+    localStorage.setItem(PRODUCTS_KEY, JSON.stringify(products));
+}
 
 function paintProduct(newProduct){
     const tr = document.createElement("tr");
@@ -29,6 +34,13 @@ function paintProduct(newProduct){
     productStatusList.appendChild(tr);
 }
 
+function IsValidProductPrice(prcie){
+    if (prcie >= 100 && prcie % 10 == 0) {
+        return true;
+    }
+    alert("상품 가격은 100원부터 시작하며, 10원으로 나누어 떨어져야 한다.");
+    return false;
+}
 
 function handleToDoSubmit(event){
     event.preventDefault();
@@ -40,6 +52,8 @@ function handleToDoSubmit(event){
     productPriceInput.value = "";
     productQuantityInput.value = "";
 
+    if (!IsValidProductPrice(parseInt(newProductPrice))) return;
+
     const newProductObj = {
         id: Date.now(),
         name: newProductName,
@@ -49,6 +63,14 @@ function handleToDoSubmit(event){
 
     products.push(newProductObj);
     paintProduct(newProductObj);
+    saveProduct();
 }  
 
 productAddForm.addEventListener("submit", handleToDoSubmit);
+
+const savedProducts = localStorage.getItem(PRODUCTS_KEY);
+if (savedProducts !== null){
+    const parsedProducts = JSON.parse(savedProducts);
+    products = parsedProducts;
+    products.forEach(paintProduct);
+}
