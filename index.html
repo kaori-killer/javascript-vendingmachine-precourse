@@ -3,14 +3,20 @@
   <head>
     <meta charset="UTF-8" />
     <title>자판기</title>
+    <link rel="stylesheet" href="css/style.css">
     <script src="https://cdn.jsdelivr.net/npm/@woowacourse/mission-utils@1.0.1/dist/mission-utils.min.js"></script>
   </head>
   <body>
     <div id="app">
+      <!-- TAB -->
+      <button id="product-add-menu">상품 관리</button>
+      <button id="vending-machine-manage-menu">잔돈 충전</button>
+      <button id="product-purchase-menu">상품 구매</button>
       <!-- 상품 관리 -->
-      <div>
+      <div id="product-add">
         <!--상품 추가하기 -->
         <div>
+          <h1>상품 추가하기</h1>
           <form id="product-add-form">
             <input type="text" id="product-name-input" placeholder="상품명">
             <input type="number" id="product-price-input" placeholder="가격">
@@ -20,14 +26,24 @@
         </div>
         <!-- 상품 현황 -->
         <div>
+          <h1>상품 현황</h1>
           <table border="1" id="product-status-list">
             <th>상품명</th>
             <th>가격</th>
             <th>수량</th>
           </table>
         </div>
-      </div> 
+      </div>
+      <!-- 잔돈 충전 -->
+      <div id="vending-machine-manage" class="hidden">
+        <h1>잔돈 충전</h1>
+      </div>
+      <!-- 상품 구매 및 잔돈 반환-->
+      <div id="product-purchase" class="hidden">
+        <h1>상품 구매 및 잔돈 반환</h1>
+      </div>
     </div>
     <script src="src/productManage.js"></script>  
+    <script src="src/changeTab.js"></script>  
   </body>
 </html>
