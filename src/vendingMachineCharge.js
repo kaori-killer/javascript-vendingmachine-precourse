@@ -13,9 +13,21 @@ function paintMoney(){
     vendingMachineChargeAmount.innerHTML = `보유 금액: ${money}`;
 }
 
+function isValidMoney(money){
+    if (money % 10 == 0)
+        return true;
+    alert("충전 금액은 충전 값은 10의 배수만 가능하다.");
+    return false;
+}
+
 function handleMoneySubmit(event){
     event.preventDefault();
-    money += parseInt(vendingMachineChargeInput.value);
+    const newMoney = parseInt(vendingMachineChargeInput.value);
+    vendingMachineChargeInput.value = "";
+    
+    if (!isValidMoney(newMoney)) return;
+
+    money += newMoney;
     paintMoney();
     saveMoney();
 }
