@@ -3,7 +3,9 @@ const vendingMachineChargeInput = document.getElementById("vending-machine-charg
 
 let money = 0;
 
-function handleMoneySubmit(){
+function handleMoneySubmit(event){
+    event.preventDefault();
+    money += parseInt(vendingMachineChargeInput.value);
 }
 
 vendingMachineChargeForm.addEventListener("submit", handleMoneySubmit);
