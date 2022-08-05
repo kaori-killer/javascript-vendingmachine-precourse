@@ -36,8 +36,19 @@
       </div>
       <!-- 잔돈 충전 -->
       <div id="vending-machine-manage" class="hidden">
-        <h1>잔돈 충전하기</h1>
-        <h1>동전 보유 현황</h1>
+        <!-- 자판기 동전 충전하기-->
+        <div>
+          <h1>잔돈 충전하기</h1>
+          <form id="vending-machine-charge-form">
+            <input type="number" id="vending-machine-charge-input">
+            <button id="vending-machine-charge-button">충전하기</button>
+          </form>
+          <p id="vending-machine-charge-amount">보유 금액:</p>
+        </div>
+        <!-- 동전 보유 현황-->
+        <div>
+          <h1>동전 보유 현황</h1>
+        </div>
       </div>
       <!-- 상품 구매 및 잔돈 반환-->
       <div id="product-purchase" class="hidden">
@@ -46,7 +57,8 @@
         <h1>잔돈</h1>
       </div>
     </div>
-    <script src="src/productManage.js"></script>  
     <script src="src/changeTab.js"></script>  
+    <script src="src/productManage.js"></script> 
+
   </body>
 </html>

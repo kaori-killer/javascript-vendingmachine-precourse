@@ -42,7 +42,7 @@ function isValidProductPrice(prcie){
     return false;
 }
 
-function handleToDoSubmit(event){
+function handleProductSubmit(event){
     event.preventDefault();
     const newProductName = productNameInput.value;
     const newProductPrice = productPriceInput.value;
@@ -66,7 +66,7 @@ function handleToDoSubmit(event){
     saveProduct();
 }  
 
-productAddForm.addEventListener("submit", handleToDoSubmit);
+productAddForm.addEventListener("submit", handleProductSubmit);
 
 const savedProducts = localStorage.getItem(PRODUCTS_KEY);
 if (savedProducts !== null){
