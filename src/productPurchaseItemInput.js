@@ -1,3 +1,5 @@
+import isValidMoney from "./vendingMachineChargeInput.js";
+
 const chargeForm = document.getElementById("charge-form");
 const chargeInput = document.getElementById("charge-input");
 const chargeAmount = document.getElementById("charge-amount");
@@ -13,10 +15,13 @@ function paintMoney(){
     chargeAmount.innerHTML = `투입한 금액: ${userMoney}`;
 }
 
+
 function handleMoneySubmit(event){
     event.preventDefault();
     const newUserMoney = parseInt(chargeInput.value);
     chargeInput.value = "";
+
+    if (!isValidMoney(newUserMoney)) return;
 
     userMoney += newUserMoney;
     paintMoney();

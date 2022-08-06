@@ -43,3 +43,5 @@ if (savedvendingMachineMoney !== null){
 } 
 
 vendingMachineChargeForm.addEventListener("submit", handleMoneySubmit);
+
+export default isValidMoney;
