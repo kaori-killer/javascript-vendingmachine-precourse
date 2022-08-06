@@ -32,6 +32,7 @@ function handleMoneySubmit(event){
     money += newMoney;
     paintMoney();
     saveMoney();
+
     moneyChangeToCoin(newMoney);
 }
 
@@ -39,7 +40,6 @@ const savedMoney = localStorage.getItem(MONEY_KEY);
 if (savedMoney !== null){
     money = parseInt(savedMoney);
     paintMoney();
-    moneyChangeToCoin(money);
 } 
 
 vendingMachineChargeForm.addEventListener("submit", handleMoneySubmit);
