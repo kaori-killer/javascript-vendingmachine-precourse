@@ -23,7 +23,6 @@ function handleMoneySubmit(event){
     saveMoney();
 }
 
-
 const savedUserMoney = localStorage.getItem(USER_MONEY_KEY);
 if(savedUserMoney !== null){
     userMoney = parseInt(savedUserMoney);
