@@ -4,15 +4,15 @@ const vendingMachineChargeForm = document.getElementById("vending-machine-charge
 const vendingMachineChargeInput = document.getElementById("vending-machine-charge-input");
 const vendingMachineChargeAmount = document.getElementById("vending-machine-charge-amount");
 
-let money = 0;
-const MONEY_KEY = "money";
+let vendingMachineMoney = 0;
+const VENDINGMACHINE_MONEY_KEY = "vendingMachineMoney";
 
 function saveMoney(){
-    localStorage.setItem(MONEY_KEY, money);
+    localStorage.setItem(VENDINGMACHINE_MONEY_KEY, vendingMachineMoney);
 }
 
 function paintMoney(){
-    vendingMachineChargeAmount.innerHTML = `보유 금액: ${money}`;
+    vendingMachineChargeAmount.innerHTML = `보유 금액: ${vendingMachineMoney}`;
 }
 
 function isValidMoney(money){
@@ -24,21 +24,21 @@ function isValidMoney(money){
 
 function handleMoneySubmit(event){
     event.preventDefault();
-    const newMoney = parseInt(vendingMachineChargeInput.value);
+    const newVendingMachineMoney = parseInt(vendingMachineChargeInput.value);
     vendingMachineChargeInput.value = "";
     
-    if (!isValidMoney(newMoney)) return;
+    if (!isValidMoney(newVendingMachineMoney)) return;
 
-    money += newMoney;
+    vendingMachineMoney += newVendingMachineMoney;
     paintMoney();
     saveMoney();
 
-    moneyChangeToCoin(newMoney);
+    moneyChangeToCoin(newVendingMachineMoney);
 }
 
-const savedMoney = localStorage.getItem(MONEY_KEY);
-if (savedMoney !== null){
-    money = parseInt(savedMoney);
+const savedvendingMachineMoney = localStorage.getItem(VENDINGMACHINE_MONEY_KEY);
+if (savedvendingMachineMoney !== null){
+    vendingMachineMoney = parseInt(savedvendingMachineMoney);
     paintMoney();
 } 
 

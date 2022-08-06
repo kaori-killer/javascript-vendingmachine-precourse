@@ -3,16 +3,16 @@ const vendingMachineCoin100Quantity = document.getElementById("vending-machine-c
 const vendingMachineCoin50Quantity = document.getElementById("vending-machine-coin-50-quantity");
 const vendingMachineCoin10Quantity = document.getElementById("vending-machine-coin-10-quantity");
 
-let coins = {
+let vendingMachineCoins = {
     "fiveHundredCoin": 0,
     "oneHundredCoin": 0,
     "fifty": 0,
     "ten": 0
 };
-const COINS_KEY  = "coins";
+const VENDING_MACHINE_COINS_KEY  = "coins";
 
 function saveCoin(){
-    localStorage.setItem(COINS_KEY, JSON.stringify(coins));
+    localStorage.setItem(VENDING_MACHINE_COINS_KEY, JSON.stringify(vendingMachineCoins));
 }
 
 function paintCoin(newCoin){
@@ -23,24 +23,24 @@ function paintCoin(newCoin){
 }
 
 function moneyChangeToCoin(newMoney){
-    coins["fiveHundredCoin"] += newMoney / 500;
-    coins["oneHundredCoin"] += newMoney % 500 / 100;
-    coins["fifty"] += newMoney % 500 % 100 / 50;
-    coins["ten"] += newMoney % 500 % 100 % 10 / 10;
+    vendingMachineCoins["fiveHundredCoin"] += newMoney / 500;
+    vendingMachineCoins["oneHundredCoin"] += newMoney % 500 / 100;
+    vendingMachineCoins["fifty"] += newMoney % 500 % 100 / 50;
+    vendingMachineCoins["ten"] += newMoney % 500 % 100 % 50 / 10;
 
-    for(const [key, val] of Object.entries(coins)){
-        coins[key] = parseInt(val);
+    for(const [key, val] of Object.entries(vendingMachineCoins)){
+        vendingMachineCoins[key] = parseInt(val);
     }
 
-    paintCoin(coins);
+    paintCoin(vendingMachineCoins);
     saveCoin();
 }
 
-const savedCoin = localStorage.getItem(COINS_KEY);
-if (savedCoin !== null){
-    const parsedCoins = JSON.parse(savedCoin);
-    coins = parsedCoins;
-    paintCoin(coins);
+const vendingMachineSavedCoin = localStorage.getItem(VENDING_MACHINE_COINS_KEY);
+if (vendingMachineSavedCoin !== null){
+    const vendingMachineParsedCoins = JSON.parse(vendingMachineSavedCoin);
+    vendingMachineCoins = vendingMachineParsedCoins;
+    paintCoin(vendingMachineCoins);
 } 
 
 export default moneyChangeToCoin;
