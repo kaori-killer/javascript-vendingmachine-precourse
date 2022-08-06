@@ -72,14 +72,29 @@
       </div>
       <!-- 상품 구매 및 잔돈 반환-->
       <div id="product-purchase" class="hidden">
-        <h1>금액 투입</h1>
-        <h1>구매할 수 있는 상품 현황</h1>
-        <h1>잔돈</h1>
+        <!-- 금액 투입 -->
+        <div>
+          <h1>금액 투입</h1>
+          <form id="charge-form">
+            <input type="number" id="charge-input">
+            <button id="charge-button">투입하기</button>
+          </form>
+          <p id="charge-amount">투입한 금액:</p>
+        </div>
+        <!-- 구매할 수 있는 상품 현황 -->
+        <div>
+          <h1>구매할 수 있는 상품 현황</h1>
+        </div>
+        <!-- 잔돈 -->
+        <div>
+          <h1>잔돈</h1>
+        </div>
       </div>
     </div>
     <script src="src/changeTab.js"></script>  
     <script src="src/productManage.js"></script> 
     <script type="module" src="src/vendingMachineChargeInput.js"></script> 
     <script type="module" src="src/vendingMachineChargePaint.js"></script> 
+    <script src="src/productPurchaseItemInput.js"></script>
   </body>
 </html>

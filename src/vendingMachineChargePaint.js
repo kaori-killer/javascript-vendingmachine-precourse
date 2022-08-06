@@ -16,7 +16,6 @@ function saveCoin(){
 }
 
 function paintCoin(newCoin){
-    console.log(newCoin);
     vendingMachineCoin500Quantity.innerHTML = `${newCoin.fiveHundredCoin}개`;
     vendingMachineCoin100Quantity.innerHTML = `${newCoin.oneHundredCoin}개`;
     vendingMachineCoin50Quantity.innerHTML = `${newCoin.fifty}개`;
