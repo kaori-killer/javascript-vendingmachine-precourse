@@ -1,3 +1,5 @@
+import moneyChangeToCoin from "./vendingMachineChargePaint.js";
+
 const vendingMachineChargeForm = document.getElementById("vending-machine-charge-form");
 const vendingMachineChargeInput = document.getElementById("vending-machine-charge-input");
 const vendingMachineChargeAmount = document.getElementById("vending-machine-charge-amount");
@@ -30,12 +32,14 @@ function handleMoneySubmit(event){
     money += newMoney;
     paintMoney();
     saveMoney();
+    moneyChangeToCoin(newMoney);
 }
 
 const savedMoney = localStorage.getItem(MONEY_KEY);
 if (savedMoney !== null){
     money = parseInt(savedMoney);
     paintMoney();
+    moneyChangeToCoin(money);
 } 
 
 vendingMachineChargeForm.addEventListener("submit", handleMoneySubmit);
