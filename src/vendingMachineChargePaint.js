@@ -4,11 +4,19 @@ const vendingMachineCoin50Quantity = document.getElementById("vending-machine-co
 const vendingMachineCoin10Quantity = document.getElementById("vending-machine-coin-10-quantity");
 
 let vendingMachineCoins = {
-    "fiveHundredCoin": 0,
-    "oneHundredCoin": 0,
-    "fifty": 0,
-    "ten": 0
+    fiveHundredCoin: 0,
+    oneHundredCoin: 0,
+    fifty: 0,
+    ten: 0
 };
+
+const vendingMachineCoinsName = {
+    500: "fiveHundredCoin",
+    100: "oneHundredCoin",
+    50: "fifty",
+    10: "ten",
+}
+
 const VENDING_MACHINE_COINS_KEY  = "coins";
 
 function saveCoin(){
@@ -23,10 +31,15 @@ function paintCoin(newCoin){
 }
 
 function moneyChangeToCoin(newMoney){
-    vendingMachineCoins["fiveHundredCoin"] += newMoney / 500;
-    vendingMachineCoins["oneHundredCoin"] += newMoney % 500 / 100;
-    vendingMachineCoins["fifty"] += newMoney % 500 % 100 / 50;
-    vendingMachineCoins["ten"] += newMoney % 500 % 100 % 50 / 10;
+    const randomNumber = MissionUtils.Random.pickNumberInList([10, 50, 100, 500]);
+    vendingMachineCoins[vendingMachineCoinsName[randomNumber]] += newMoney / randomNumber; // 이해 안되는 부분
+    newMoney = newMoney % randomNumber;
+
+    console.log(vendingMachineCoins);
+    vendingMachineCoins.fiveHundredCoin += newMoney / 500;
+    vendingMachineCoins.oneHundredCoin += newMoney % 500 / 100;
+    vendingMachineCoins.fifty += newMoney % 500 % 100 / 50;
+    vendingMachineCoins.ten += newMoney % 500 % 100 % 50 / 10;
 
     for(const [key, val] of Object.entries(vendingMachineCoins)){
         vendingMachineCoins[key] = parseInt(val);
