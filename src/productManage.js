@@ -43,6 +43,17 @@ function isValidProductPrice(prcie){
     return false;
 }
 
+function isValidFullProduct(productPropertyArray){
+    let result = true;
+    productPropertyArray.forEach((property) => {
+        if(property.trim() === ''){
+            alert("상품명, 가격, 수량을 모두 입력해야 추가가 가능하다.");
+            result = false;
+        } 
+    })
+    return result;
+}
+
 function handleProductSubmit(event){
     event.preventDefault();
     const newProductName = productNameInput.value;
@@ -54,6 +65,7 @@ function handleProductSubmit(event){
     productQuantityInput.value = "";
 
     if (!isValidProductPrice(parseInt(newProductPrice))) return;
+    if (!isValidFullProduct([newProductName, newProductPrice, newProductQuantity])) return;
 
     const newProductObj = {
         id: Date.now(),

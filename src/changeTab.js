@@ -18,7 +18,7 @@ let preTab = productAdd
 let nowTab = productAdd
 
 function onChangeTab(event){
-    event.preventDefault();
+    // event.preventDefault();
     preTab.classList.add(HIDDEN_CLASSNAME);
     nowTab = MenuToTab[event.target.id];
     nowTab.classList.remove(HIDDEN_CLASSNAME);       
