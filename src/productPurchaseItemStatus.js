@@ -1,4 +1,35 @@
+import saveProduct from "./productManage.js";
+
 const productPurchaseStatusList = document.getElementById("product-purchase-status-list");
+
+function productPurchase(event){
+    const tdButton = event.target.parentElement
+    const tr = tdButton.parentElement;
+    let returnProducts = []
+
+    products.forEach(product => {
+        const productQuantity = tr.children[2];
+        if(product.id == parseInt(tr.id)){
+            if (isValidPurChase(product)) {
+                product.quantity -= 1;
+                productQuantity.innerHTML = product.quantity;    
+            }
+        }
+        returnProducts.push(product);
+    }); 
+    products = returnProducts;   
+    saveProduct();
+}
+
+function isValidPurChase(product){
+    if (product.quantity > 0) return true;
+    alert("품절된 상품입니다.");
+    return false;    
+}
+
+function deletePurchase(product){
+
+}
 
 function paintPurchaseProduct(newProduct){
     const tr = document.createElement("tr");
@@ -22,6 +53,7 @@ function paintPurchaseProduct(newProduct){
     tdButton.className = "purchase-button";
     button.innerHTML = "구매하기";
     tdButton.appendChild(button);
+    button.addEventListener("click", productPurchase);
 
     tr.appendChild(tdName);
     tr.appendChild(tdPrice);

@@ -6,7 +6,6 @@ const productPriceInput = productAddForm.querySelector("#product-price-input");
 const productQuantityInput = productAddForm.querySelector("#product-quantity-input");
 const productStatusList = document.getElementById("product-status-list");
 
-let products = [];
 const PRODUCTS_KEY = "products";
 
 function saveProduct(){
@@ -78,3 +77,5 @@ if (savedProducts !== null){
     products.forEach(paintProduct);
     products.forEach(paintPurchaseProduct);
 }
+
+export default saveProduct;
