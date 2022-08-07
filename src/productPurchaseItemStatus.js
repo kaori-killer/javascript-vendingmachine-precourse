@@ -38,14 +38,17 @@ function paintPurchaseProduct(newProduct){
 
     const tdName = document.createElement("td");
     tdName.className = "product-purchase-name";
+    tdName.setAttribute("data-product-name", newProduct.name);
     tdName.innerHTML = newProduct.name;
 
     const tdPrice = document.createElement("td");
     tdPrice.className = " product-purchase-price";
+    tdPrice.setAttribute("data-product-price", newProduct.price);
     tdPrice.innerHTML = newProduct.price;
 
     const tdQuantity = document.createElement("td");
     tdQuantity.className = "product-purchase-quantity";
+    tdPrice.setAttribute("data-product-quantity", newProduct.quantity);
     tdQuantity.innerHTML = newProduct.quantity;
 
     const tdButton = document.createElement("td");
