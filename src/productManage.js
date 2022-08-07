@@ -1,3 +1,5 @@
+import paintPurchaseProduct from "./productPurchaseItemStatus.js";
+
 const productAddForm = document.getElementById("product-add-form");
 const productNameInput = productAddForm.querySelector("#product-name-input");
 const productPriceInput = productAddForm.querySelector("#product-price-input");
@@ -5,7 +7,7 @@ const productQuantityInput = productAddForm.querySelector("#product-quantity-inp
 const productStatusList = document.getElementById("product-status-list");
 
 let products = [];
-PRODUCTS_KEY = "products";
+const PRODUCTS_KEY = "products";
 
 function saveProduct(){
     localStorage.setItem(PRODUCTS_KEY, JSON.stringify(products));
@@ -63,6 +65,7 @@ function handleProductSubmit(event){
 
     products.push(newProductObj);
     paintProduct(newProductObj);
+    paintPurchaseProduct(newProductObj);
     saveProduct();
 }  
 
@@ -73,4 +76,5 @@ if (savedProducts !== null){
     const parsedProducts = JSON.parse(savedProducts);
     products = parsedProducts;
     products.forEach(paintProduct);
+    products.forEach(paintPurchaseProduct);
 }
