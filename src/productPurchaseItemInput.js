@@ -33,6 +33,12 @@ export function MinusUserMoney(money){
     paintMoney();
 }
 
+export function isValidFullMoney(money){
+    if(userMoney >= money) return true;
+    alert("돈이 부족하다면 상품을 구매할 수 없다.");
+    return false;
+}
+
 const savedUserMoney = localStorage.getItem(USER_MONEY_KEY);
 if(savedUserMoney !== null){
     userMoney = parseInt(savedUserMoney);

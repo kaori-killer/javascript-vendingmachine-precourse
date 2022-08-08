@@ -1,5 +1,5 @@
 import saveProduct from "./productManage.js";
-import {MinusUserMoney} from "./productPurchaseItemInput.js";
+import {MinusUserMoney, isValidFullMoney} from "./productPurchaseItemInput.js";
 
 const productPurchaseStatusList = document.getElementById("product-purchase-status-list");
 
@@ -11,7 +11,7 @@ function productPurchase(event){
     products.forEach(product => {
         const productQuantity = tr.children[2];
         if(product.id == parseInt(tr.id)){
-            if (isValidPurChase(product)) {
+            if (isValidPurChase(product) && isValidFullMoney(product.price)) {
                 product.quantity -= 1;
                 MinusUserMoney(product.price);
                 productQuantity.innerHTML = product.quantity;
