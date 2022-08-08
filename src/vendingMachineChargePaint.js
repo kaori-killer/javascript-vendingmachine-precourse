@@ -3,7 +3,7 @@ const vendingMachineCoin100Quantity = document.getElementById("vending-machine-c
 const vendingMachineCoin50Quantity = document.getElementById("vending-machine-coin-50-quantity");
 const vendingMachineCoin10Quantity = document.getElementById("vending-machine-coin-10-quantity");
 
-let vendingMachineCoins = {
+export let vendingMachineCoins = {
     fiveHundredCoin: 0,
     oneHundredCoin: 0,
     fifty: 0,

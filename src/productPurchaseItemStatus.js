@@ -1,4 +1,5 @@
 import saveProduct from "./productManage.js";
+import {MinusUserMoney} from "./productPurchaseItemInput.js";
 
 const productPurchaseStatusList = document.getElementById("product-purchase-status-list");
 
@@ -12,7 +13,8 @@ function productPurchase(event){
         if(product.id == parseInt(tr.id)){
             if (isValidPurChase(product)) {
                 product.quantity -= 1;
-                productQuantity.innerHTML = product.quantity;    
+                MinusUserMoney(product.price);
+                productQuantity.innerHTML = product.quantity;
             }
         }
         returnProducts.push(product);
@@ -25,10 +27,6 @@ function isValidPurChase(product){
     if (product.quantity > 0) return true;
     alert("품절된 상품입니다.");
     return false;    
-}
-
-function deletePurchase(product){
-
 }
 
 function paintPurchaseProduct(newProduct){

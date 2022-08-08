@@ -15,7 +15,6 @@ function paintMoney(){
     chargeAmount.innerHTML = `투입한 금액: ${userMoney}`;
 }
 
-
 function handleMoneySubmit(event){
     event.preventDefault();
     const newUserMoney = parseInt(chargeInput.value);
@@ -26,6 +25,12 @@ function handleMoneySubmit(event){
     userMoney += newUserMoney;
     paintMoney();
     saveMoney();
+}
+
+export function MinusUserMoney(money){
+    userMoney -= money
+    saveMoney();
+    paintMoney();
 }
 
 const savedUserMoney = localStorage.getItem(USER_MONEY_KEY);
