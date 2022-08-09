@@ -10,7 +10,7 @@ export let vendingMachineCoins = {
     ten: 0
 };
 
-const vendingMachineCoinsName = {
+export const vendingMachineCoinsName = {
     500: "fiveHundredCoin",
     100: "oneHundredCoin",
     50: "fifty",

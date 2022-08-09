@@ -1,4 +1,6 @@
 import isValidMoney from "./vendingMachineChargeInput.js";
+import {vendingMachineCoinsName, vendingMachineCoins} from "./vendingMachineChargePaint.js";
+import paintCoin from "./returnChargePaint.js";
 
 const chargeForm = document.getElementById("charge-form");
 const chargeInput = document.getElementById("charge-input");
@@ -6,6 +8,13 @@ const chargeAmount = document.getElementById("charge-amount");
 
 let userMoney = 0;
 const USER_MONEY_KEY = "userMoney";
+
+let returnCoins = {
+    fiveHundredCoin: 0,
+    oneHundredCoin: 0,
+    fifty: 0,
+    ten: 0
+};
 
 function saveMoney(){
     localStorage.setItem(USER_MONEY_KEY, userMoney);
@@ -37,6 +46,21 @@ export function isValidFullMoney(money){
     if(userMoney >= money) return true;
     alert("돈이 부족하다면 상품을 구매할 수 없다.");
     return false;
+}
+
+export function moneyChangeToCoin(){
+    for(const [idx, coin] of [500, 100, 50, 10].entries()){
+        let coinCount = vendingMachineCoins[vendingMachineCoinsName[coin]]; 
+        while(userMoney){
+            if (!coinCount) break;
+            coinCount -= 1
+            userMoney -= coin;
+            returnCoins[vendingMachineCoinsName[coin]] += 1
+        }
+    }
+    paintCoin(returnCoins);
+    saveMoney();
+    paintMoney();
 }
 
 const savedUserMoney = localStorage.getItem(USER_MONEY_KEY);
