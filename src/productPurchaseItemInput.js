@@ -48,9 +48,20 @@ export function isValidFullMoney(money){
     return false;
 }
 
+function isValidReturn(){
+    const vendingMachineMoneyTotal = 500 * (vendingMachineCoins.fiveHundredCoin) + 100 * (vendingMachineCoins.oneHundredCoin) + 50 * (vendingMachineCoins.fifty) + 10 * (vendingMachineCoins.ten);
+    console.log(vendingMachineMoneyTotal);
+    if(userMoney <= vendingMachineMoneyTotal) return true;
+    else{
+        alert("자판기에 돈이 부족합니다.");
+        return false;
+    }}
+
 export function moneyChangeToCoin(){
     for(const [idx, coin] of [500, 100, 50, 10].entries()){
         let coinCount = vendingMachineCoins[vendingMachineCoinsName[coin]]; 
+        if (!isValidReturn()) return;
+
         while(userMoney){
             if (!coinCount) break;
             coinCount -= 1
